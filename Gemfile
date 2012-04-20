@@ -12,10 +12,13 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'heroku'
-  gem 'reek'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'cane'
   gem 'simplecov'
   gem 'tailor', '0.1.5'
+  gem 'ripper_ruby_parser'
+  gem 'reek', :git => 'git://github.com/mvz/reek.git',
+      :branch => 'ripper_ruby_parser-2'
 end
 
 group :assets do
