@@ -12,6 +12,10 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'heroku'
+  gem 'reek'
+  gem 'cane'
+  gem 'simplecov'
+  gem 'tailor', '0.1.5'
 end
 
 group :assets do
