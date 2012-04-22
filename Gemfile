@@ -10,6 +10,9 @@ group :production do
 end
 
 group :development, :test do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rspec-rails'
   gem 'sqlite3'
   gem 'heroku'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
