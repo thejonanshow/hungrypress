@@ -8,8 +8,9 @@ magenta = escape[35]
 cyan    = escape[36]
 reset   = escape[ 0]
 
-desc "Runs reek and cane."
+desc "Annotates models, then runs reek and cane."
 task :quality do
+  puts `bundle exec annotate --exclude [tests,fixtures] `
   puts yellow + "Cane " + "=" * 10 + reset
   puts `cane --style-glob="{app,lib}/**/*.rb"`
 
