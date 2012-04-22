@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
+gem 'gravatar_image_tag'
 
 group :production do
   gem 'pg'
