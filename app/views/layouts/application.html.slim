@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Hungrypress</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+doctype html
+html
+  head
+    title Hungrypress
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
 
-<%= yield %>
-
-</body>
-</html>
+  body
+    ul
+      li = link_to current_user.email, user_path(current_user)
+    = yield
