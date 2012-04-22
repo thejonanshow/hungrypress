@@ -8,5 +8,10 @@ html
 
   body
     ul
-      li = link_to current_user.email, user_path(current_user)
+      - if current_user
+        li = link_to current_user.email, user_path(current_user)
+        li = link_to 'logout', destroy_user_session_path, :method => :delete
+      - else
+        li = link_to 'signup', new_user_registration_path
+        li = link_to 'signin', new_user_session_path
     = yield
