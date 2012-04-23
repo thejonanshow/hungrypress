@@ -1,20 +1,31 @@
 require 'spec_helper'
 
-describe "user registration" do
+describe User do
   let(:user) { Fabricate.build(:user) }
+  let(:admin_user) { Fabricate.build(:admin_user) }
 
-  describe "allows new users" do
-    it "with valid email" do
-      sign_up_as(user)
-      page.should have_content("You have signed up successfully.")
+  describe "registration" do
+    describe "allows new users" do
+      it "with valid email" do
+        sign_up_as(user)
+        page.should have_content("You have signed up successfully.")
+      end
+    end
+
+    describe "disallows new users" do
+      it "with invalid email" do
+        user.email = 'foo'
+        sign_up_as(user)
+        page.should have_content("Email is invalid")
+      end
     end
   end
 
-  describe "disallows new users" do
-    it "with invalid email" do
-      user.email = 'foo'
+  describe "authorization" do
+    it "disallows non-admin users from indexing users" do
       sign_up_as(user)
-      page.should have_content("Email is invalid")
+      visit users_path
+      page.should have_content("You are not authorized to access this page.")
     end
   end
 end
